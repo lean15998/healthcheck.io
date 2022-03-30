@@ -99,8 +99,8 @@ B1: Tạo bot Telegram
 
 <img src="https://github.com/lean15998/healthcheck.io/blob/main/images/02.png" />
 B2: Lấy id group-chat, type-chat, tên group chat 
-- Tạo group với bot và chat một câu bất kỳ để lấy id group chat
-- 
+- Tạo group với bot và chat một câu bất kỳ để lấy id group chat, type-chat, tên group chat...
+ 
 <img src="https://github.com/lean15998/healthcheck.io/blob/main/images/04.png" />
 
 <img src="https://github.com/lean15998/healthcheck.io/blob/main/images/05.png" />
