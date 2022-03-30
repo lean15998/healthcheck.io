@@ -22,45 +22,45 @@ To set up Healthchecks development environment:
 
 * Install dependencies (Debian/Ubuntu):
 ```sh
-        root@quynv:~sudo apt-get update
-        root@quynv:~ apt-get install -y gcc python3-dev python3-venv libpq-dev
+root@quynv:~sudo apt-get update
+root@quynv:~ apt-get install -y gcc python3-dev python3-venv libpq-dev
 ```
 * Prepare directory for project code and virtualenv. Feel free to use a
   different location:
 ```sh
-       root@quynv:~ mkdir -p ~/webapps
-       root@quynv:~ cd ~/webapps
+ root@quynv:~ mkdir -p ~/webapps
+ root@quynv:~ cd ~/webapps
 ```
 * Prepare virtual environment
   (with virtualenv you get pip, we'll use it soon to install requirements):
 ```sh
-        root@quynv:~/webapps# python3 -m venv hc-venv
-        (hc-venv) root@quynv:~/webapps# source hc-venv/bin/activate
-        (hc-venv) root@quynv:~/webapps# pip3 install wheel
+ root@quynv:~/webapps# python3 -m venv hc-venv
+ (hc-venv) root@quynv:~/webapps# source hc-venv/bin/activate
+ (hc-venv) root@quynv:~/webapps# pip3 install wheel
 ```
 * Check out project code:
 ```sh
-        (hc-venv) root@quynv:~/webapps# git clone https://github.com/healthchecks/healthchecks.git
+(hc-venv) root@quynv:~/webapps# git clone https://github.com/healthchecks/healthchecks.git
 ```
 * Install requirements (Django, ...) into virtualenv:
 ```sh
-        (hc-venv) root@quynv:~/webapps# pip install -r healthchecks/requirements.txt
+(hc-venv) root@quynv:~/webapps# pip install -r healthchecks/requirements.txt
 ```
 
 * Create database tables and a superuser account:
 ```sh
-        (hc-venv) root@quynv:~/webapps# cd ~/webapps/healthchecks
-        (hc-venv) root@quynv:~/webapps/healthchecks# ./manage.py migrate
-        (hc-venv) root@quynv:~/webapps/healthchecks# ./manage.py createsuperuser
+ (hc-venv) root@quynv:~/webapps# cd ~/webapps/healthchecks
+ (hc-venv) root@quynv:~/webapps/healthchecks# ./manage.py migrate
+ (hc-venv) root@quynv:~/webapps/healthchecks# ./manage.py createsuperuser
 ```
  
 * Run tests:
 ```sh
-        (hc-venv) root@quynv:~/webapps/healthchecks# ./manage.py test
+(hc-venv) root@quynv:~/webapps/healthchecks# ./manage.py test
 ```
 * Run development server:
 ```sh
-        (hc-venv) root@quynv:~/webapps/healthchecks# nohup ./manage.py runserver 192.168.18.75:8000 &
+(hc-venv) root@quynv:~/webapps/healthchecks# nohup ./manage.py runserver 192.168.18.75:8000 &
 ```
 The site should now be running at `http://192.168.18.75:8000`.
 
@@ -71,7 +71,7 @@ polls database for any checks changing state, and sends out notifications as
 needed. Within an activated virtualenv, you can manually run
 the `sendalerts` command like so:
 ```sh
-    (hc-venv) root@quynv:~/webapps/healthchecks# nohup ./manage.py sendalerts &
+(hc-venv) root@quynv:~/webapps/healthchecks# nohup ./manage.py sendalerts &
 ```
 
 ## Sending Emails
