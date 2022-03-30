@@ -1,0 +1,54 @@
+# 1. Các khái niệm
+- Healthchecks.io là một dịch vụ để theo dõi các cron job và các công việc định kỳ tương tự:
+<ul>
+  <ul>
+    <li> Healthchecks.io lắng nghe các HTTP request ("ping") từ các cron job và các task đã lên lịch của bạn.
+    <li> Healthcheck.io sẽ giữ im lặng miễn là ping đến đúng giờ.
+    <li> Đưa ra cảnh báo ngay khi ping không đến đúng giờ.
+  </ul>
+  </ul>
+ 
+### Check
+- Một `check` đại diện cho một dịch vụ muốn giám sát.
+- Ví dụ: khi giám sát các cron job, bạn sẽ tạo một check riêng cho từng cron job được theo dõi.
+- Các trạng thái của `check`:
+
+
+| New | Một check mới được tạo chưa nhận được bất kỳ ping nào. Mỗi check mới khởi tạo sẽ bắt đầu ở trạng thái này. |
+| -- | -- |
+| Up | Tất cả đều tốt, ping “success” cuối cùng đến đúng thời gian. |
+| Late | Ping "success" vẫn chưa đến khi check đã quá thời gian dự kiến và chuyển sang Grace Time (thời gian gia hạn) |
+| Down | Ping "success" vẫn chưa đến, và Grace time đã hết. Khi check chuyển sang trạng thái "Down", Healthchecks.io sẽ gửi cảnh báo  |
+| Paused | Tạm dừng check . |
+
+### Ping URL
+- Mỗi check có một URL Ping duy nhất. Client (cron job, background workers, batch scripts, scheduled tasks, web services) thực hiện các  HTTP request tới ping URL để bắn trạng thái monitor cho Healthcheck.io.
+- Healthchecks.io hỗ trợ hai định dạng URL ping:
+<ul>
+  <ul>
+    <li> https://hc-ping.com/<uuid>
+    <li> https://hc-ping.com/<project-ping-key>/<name-slug>
+      </ul>
+      </ul>
+- Các trạng thái monitor
+      
+| Success (UUID) |	https://hc-ping.com/uuid |
+| -- | -- |
+| Start (UUID)	| https://hc-ping.com/uuid/start |
+| Failure (UUID) |	https://hc-ping.com/uuid/fail |
+| Report script's exit status (UUID) | https://hc-ping.com/uuid/exit-status |
+| Success (slug)	| https://hc-ping.com/ping-key/<slug> |
+| Start (slug)	| https://hc-ping.com/ping-key/slug/start |
+| Failure (slug)	| https://hc-ping.com/ping-key/slug/fail |
+| Report script's exit status (slug) |	https://hc-ping.com/ping-key/slug/exit-status |
+
+### Grace Time
+- Grace time là thời gian gia hạn thêm khi check bị trễ so với dự kiến. 
+- Nếu một công việc gửi tín hiệu "start" nhưng sau đó không gửi tín hiệu "success" trong thời gian gia hạn, Healthchecks.io sẽ cho rằng công việc đã thất bại và gửi cảnh báo.  
+    
+### Integration
+- Integration: là một phương pháp cụ thể để đưa ra các cảnh báo giám sát khi các check thay đổi trạng thái. Healthchecks.io hỗ trợ nhiều kiểu tích hợp khác nhau: email, webhooks, SMS, Slack, PagerDuty...
+      
+###  Project
+      
+- Để giữ mọi thứ có tổ chức, bạn có thể nhóm check và integration trong Project. Bạn có thể chuyển các Check hiện có giữa các project trong khi vẫn giữ nguyên cấu hình và URL ping của chúng.
