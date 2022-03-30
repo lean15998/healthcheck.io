@@ -16,27 +16,25 @@
             +-----------+-----------+    +-----------------------+      
 ```
 
-## Setting Up for Development
+# Cài đặt Healthcheck.io
 
-To set up Healthchecks development environment:
 
-* Install dependencies (Debian/Ubuntu):
+* Cài đặt các gói phụ thuộc (Debian/Ubuntu):
 ```sh
-root@quynv:~sudo apt-get update
+root@quynv:~ sudo apt-get update
 root@quynv:~ apt-get install -y gcc python3-dev python3-venv libpq-dev
 ```
-* Prepare directory for project code and virtualenv. Feel free to use a
-  different location:
+* Tạo thư mục cho project và virtualenv.
+  
 ```sh
- root@quynv:~ mkdir -p ~/webapps
- root@quynv:~ cd ~/webapps
+root@quynv:~ mkdir -p ~/webapps
+root@quynv:~ cd ~/webapps
 ```
-* Prepare virtual environment
-  (with virtualenv you get pip, we'll use it soon to install requirements):
+* Chuẩn bị môi trường ảo (with virtualenv you get pip):
 ```sh
- root@quynv:~/webapps# python3 -m venv hc-venv
- (hc-venv) root@quynv:~/webapps# source hc-venv/bin/activate
- (hc-venv) root@quynv:~/webapps# pip3 install wheel
+root@quynv:~/webapps# python3 -m venv hc-venv
+(hc-venv) root@quynv:~/webapps# source hc-venv/bin/activate
+(hc-venv) root@quynv:~/webapps# pip3 install wheel
 ```
 * Check out project code:
 ```sh
@@ -62,24 +60,16 @@ root@quynv:~ apt-get install -y gcc python3-dev python3-venv libpq-dev
 ```sh
 (hc-venv) root@quynv:~/webapps/healthchecks# nohup ./manage.py runserver 192.168.18.75:8000 &
 ```
-The site should now be running at `http://192.168.18.75:8000`.
+Server bây giờ sẽ được chạy trên `http://192.168.18.75:8000`.
 
-## Sending Status Notifications
+## Gửi thông báo trạng thái
 
-healtchecks comes with a `sendalerts` management command, which continuously
-polls database for any checks changing state, and sends out notifications as
-needed. Within an activated virtualenv, you can manually run
-the `sendalerts` command like so:
+healthcheck đi kèm với lệnh quản lý `sendalerts` liên tục thăm dò cơ sở dữ liệu để tìm bất kỳ trạng thái thay đổi kiểm tra nào và gửi thông báo khi cần thiết. Trong một virtualenv đã được kích hoạt, bạn có thể chạy lệnh `sendalerts` thủ công như sau:
 ```sh
 (hc-venv) root@quynv:~/webapps/healthchecks# nohup ./manage.py sendalerts &
 ```
 
-## Sending Emails
-
-
-Healthchecks must be able to send email messages, so it can send out login
-links and alerts to users. Specify your SMTP credentials using the following
-environment variables:
+## Gửi email
 
 B1: Cấu hình email trong file configure
 ```python
