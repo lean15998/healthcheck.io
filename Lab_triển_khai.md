@@ -86,13 +86,13 @@ EMAIL_USE_VERIFICATION = envbool("EMAIL_USE_VERIFICATION", "True")
 ### Telegram
 
 B1: Tạo bot Telegram
-<img src="https://git.paas.vn/quynv/healthcheck.io/-/blob/main/images/01.png" />
-<img src="https://git.paas.vn/quynv/healthcheck.io/-/blob/main/images/02.png" />
+<img src="https://github.com/lean15998/healthcheck.io/blob/main/images/01.png" />
+<img src="https://github.com/lean15998/healthcheck.io/blob/main/images/02.png" />
 B2: Lấy id group-chat, type-chat, tên group chat 
 - Tạo group với bot và chat một câu bất kỳ để lấy id group chat
-<img src="https://git.paas.vn/quynv/healthcheck.io/-/blob/main/images/04.png" />
+<img src="https://github.com/lean15998/healthcheck.io/blob/main/images/04.png" />
 
-<img src="https://git.paas.vn/quynv/healthcheck.io/-/blob/main/images/05.png" />
+<img src="https://github.com/lean15998/healthcheck.io/blob/main/images/05.png" />
 - Lưu lại group-chat, type-chat, tên group chat
 
 B3: Thêm tên bot và token bot telegram vào file configure
@@ -110,13 +110,13 @@ B4: Restart server healthcheck.io
 B5: Add API channel
  - Truy cập vào trang admin `http://192.168.18.75:8000/admin/`
  - Đến  API -> Channel -> add
- <img src="https://git.paas.vn/quynv/healthcheck.io/-/blob/main/images/06.png" />
+ <img src="https://github.com/lean15998/healthcheck.io/blob/main/images/06.png" />
  - Nhập các thông tin như sau:
-<img src="https://git.paas.vn/quynv/healthcheck.io/-/blob/main/images/07.png" />
+<img src="https://github.com/lean15998/healthcheck.io/blob/main/images/07.png" />
 B6: Gửi một thông báo test đến group telegram
-<img src="https://git.paas.vn/quynv/healthcheck.io/-/blob/main/images/08.png" />
+<img src="https://github.com/lean15998/healthcheck.io/blob/main/images/08.png" />
 - Check thông báo trên telegram
-<img src="https://git.paas.vn/quynv/healthcheck.io/-/blob/main/images/09.png" />
+<img src="https://github.com/lean15998/healthcheck.io/blob/main/images/09.png" />
 
 ## Sending Status Notifications
 
