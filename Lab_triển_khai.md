@@ -64,7 +64,15 @@ To set up Healthchecks development environment:
 ```
 The site should now be running at `http://192.168.18.75:8000`.
 
+## Sending Status Notifications
 
+healtchecks comes with a `sendalerts` management command, which continuously
+polls database for any checks changing state, and sends out notifications as
+needed. Within an activated virtualenv, you can manually run
+the `sendalerts` command like so:
+```sh
+    (hc-venv) root@quynv:~/webapps/healthchecks# nohup ./manage.py sendalerts &
+```
 
 ## Sending Emails
 
@@ -129,14 +137,4 @@ B6: Gửi một thông báo test đến group telegram
 - Check thông báo trên telegram
 
 <img src="https://github.com/lean15998/healthcheck.io/blob/main/images/09.png" />
-
-## Sending Status Notifications
-
-healtchecks comes with a `sendalerts` management command, which continuously
-polls database for any checks changing state, and sends out notifications as
-needed. Within an activated virtualenv, you can manually run
-the `sendalerts` command like so:
-```sh
-    (hc-venv) root@quynv:~/webapps/healthchecks# nohup ./manage.py sendalerts &
-```
 
