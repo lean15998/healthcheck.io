@@ -105,7 +105,7 @@ B2: Lấy id group-chat, type-chat, tên group chat
 
 <img src="https://github.com/lean15998/healthcheck.io/blob/main/images/05.png" />
 
-- Lưu lại group-chat, type-chat, tên group chat
+- Lưu lại "id":-704867163,"title":"Healthcheck.io","type":"group"
 
 B3: Thêm tên bot và token bot telegram vào file configure
 
@@ -122,7 +122,7 @@ B4: Restart server healthcheck.io
 B5: Add API channel
  - Truy cập vào trang admin `http://192.168.18.75:8000/admin/`
  - Đến  API -> Channel -> add
- - 
+  
  <img src="https://github.com/lean15998/healthcheck.io/blob/main/images/06.png" />
  
  
