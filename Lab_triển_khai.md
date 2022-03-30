@@ -76,10 +76,12 @@ the `sendalerts` command like so:
 
 ## Sending Emails
 
+
 Healthchecks must be able to send email messages, so it can send out login
 links and alerts to users. Specify your SMTP credentials using the following
 environment variables:
 
+B1: Cấu hình email trong file configure
 ```python
 (hc-venv) root@quynv-healthcheck:~/webapps/healthchecks# vim hc/settings.py
 
@@ -91,6 +93,27 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "********")
 EMAIL_USE_TLS = envbool("EMAIL_USE_TLS", "True")
 EMAIL_USE_VERIFICATION = envbool("EMAIL_USE_VERIFICATION", "True")
 ```
+B2: Restart server healthcheck.io
+
+B3: Add API channel
+ - Truy cập vào trang admin `http://192.168.18.75:8000/admin/`
+ - Đến  API -> Channel -> add
+  
+ <img src="https://github.com/lean15998/healthcheck.io/blob/main/images/06.png" />
+ 
+ 
+ - Nhập các thông tin như sau:
+ 
+<img src="https://github.com/lean15998/healthcheck.io/blob/main/images/10.png" />
+
+B4: Gửi một thông báo test đến group telegram
+
+<img src="https://github.com/lean15998/healthcheck.io/blob/main/images/11.png" />
+
+- Check thông báo trên telegram
+
+<img src="https://github.com/lean15998/healthcheck.io/blob/main/images/12.png" />
+
 ### Telegram
 
 B1: Tạo bot Telegram
